@@ -2,10 +2,21 @@ html {
     font-family: 'Noto Sans', 'Helvetica', 'sans-serif';
 }
 
-h1 {
+.title-card {
     display: flex;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+}
+
+.title {
+    padding: 0;
+    margin: 8px;
+}
+
+.subtitle {
+    padding: 0;
+    margin: 0;
 }
 
 .container {
@@ -16,9 +27,26 @@ h1 {
 }
 
 .options {
+    margin: 8px;
+
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     align-items: center;
+
+    gap: 16px;
+}
+
+button {
+    border: 1px solid dimgrey;
+    /* box-shadow: 2px 2px 4px black; */
+    background-color: beige;
+}
+
+button:hover {
+    background-color: dimgray;
+    border: 1px solid beige;
+    color: beige;
 }
 
 .board {
@@ -28,16 +56,16 @@ h1 {
     align-items: center;
 
     background-color: beige;
+    border: 1px solid dimgray;
+    box-shadow: 8px 8px 16px black;
 
     width: 512px;
     height: 512px;
 
-    margin: 32px;
+    margin: 24px;
 }
 
 .cell {
     box-sizing: border-box;
     background-color: black;
-
-    opacity: 0;
 }

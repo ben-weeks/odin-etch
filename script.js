@@ -4,11 +4,10 @@ let cellNum = 32;
 const board = document.querySelector(".board");
 const boardWidth = parseInt(window.getComputedStyle(board).width);
 
-const cellSize = boardWidth / cellNum;
-console.log(cellSize);
 
 // board creation
 function constructBoard() {
+    let cellSize = boardWidth / cellNum;
     for (let i = 0; i < (cellNum * cellNum); i++) {
         const cell = document.createElement("div");
         cell.classList.add("cell");
@@ -17,19 +16,23 @@ function constructBoard() {
 
         board.appendChild(cell);
     }
+    cells = document.querySelectorAll(".cell");
+    addCellEventListeners();
 };
 
 constructBoard();
+clearBoard();
 
 // draw on board
-const cells = document.querySelectorAll(".cell");
-cells.forEach((cell) => {
-    cell.addEventListener('mouseenter', () => {
-        let op = cell.style.opacity;
-        cell.style.opacity = op + 0.1;
-        console.log(cell.style.opacity);
+function addCellEventListeners() {
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach((cell) => {
+        cell.addEventListener('mouseenter', () => {
+            cell.style.opacity = parseFloat(cell.style.opacity) + 0.1;
+            console.log(cell.style.opacity);
+        });
     });
-});
+}
 
 // clear board function
 function clearBoard() {
@@ -51,6 +54,7 @@ resizeButton.addEventListener('click', () => {
     cellNum = (cellNum < 8) ? 8 : cellNum;
 
     cells.forEach((cell) => { board.removeChild(cell); })
+    console.log(cellNum);
 
     constructBoard();
     clearBoard();
